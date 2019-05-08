@@ -13,6 +13,14 @@
 
 <div class="container">
     <a href="hello">Hello</a>
+    <a href="/users">列表</a>
+    <a href="/users/1">查询</a>
+    <form action="/users" method="post">
+        <input type="text" value="meiguo" name="name">
+        <input type="submit" value="创建">
+    </form>
+    <button id="updateUser">更新</button>
+    <button id="deleteUser">删除</button>
     <a href="springmvc/testRequestMapping">Test RequestMapping</a>
     <a href="springmvc/testMethod">Test Method</a>
     <a href="springmvc/testParamsAndHeaders?username=yyt&age=20">Test testParamsAndHeaders</a>
@@ -33,6 +41,8 @@
     <a href="springmvc/testCookieValue">test CookieValue</a>
     <a href="springmvc/testServletAPI">test ServletAPI</a>
     <a href="springmvc/testModelAndView">test ModelAndView</a>
+    <a href="users">list users</a>
+    <a href="springmvc/">list users</a>
     <form action="springmvc/testPojo" method="post">
         username: <input type="text" name="username"/><br>
         password: <input type="password" name="password"/><br>
@@ -51,6 +61,28 @@
                 $.ajax({
                     url: "springmvc/testSessionAttributes",
                     type: "post",
+                    dataType: "json",
+                    success: function (data,status) {
+                        console.log(data)
+                    }
+                });
+            });
+            $("#updateUser").click(function () {
+                $.ajax({
+                    url: "users/21",
+                    type: "post",
+                    data:{_method:"PUT"},
+                    dataType: "json",
+                    success: function (data,status) {
+                        console.log(data)
+                    }
+                });
+            });
+            $("#deleteUser").click(function () {
+                $.ajax({
+                    url: "users/26",
+                    type: "post",
+                    data:{_method:"DELETE"},
                     dataType: "json",
                     success: function (data,status) {
                         console.log(data)
